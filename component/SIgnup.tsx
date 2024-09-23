@@ -94,7 +94,7 @@
 //   },
 // });
 
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TextInput, Button, HelperText } from "react-native-paper";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -110,7 +110,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const Signup = () => {
+const Signup = ({navigation}) => {
   const {
     control,
     handleSubmit,
@@ -227,6 +227,14 @@ const Signup = () => {
       >
         {isSubmitting ? "Submitting..." : "Signup"}
       </Button>
+      <Text>
+        Already have an Account{" "}
+        <Pressable onPress={() => navigation.navigate("Login")}>
+          <Text style={{ color: "#735503", textDecorationLine: "underline" }}>
+            Login
+          </Text>
+        </Pressable>
+      </Text>
     </View>
   );
 };
@@ -239,7 +247,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 20,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#f7e4b0",
   },
   title: {
     fontSize: 28,
@@ -252,6 +260,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 10,
+    backgroundColor: "#735503",
   },
   buttonContent: {
     height: 50,

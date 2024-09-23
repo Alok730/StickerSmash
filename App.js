@@ -12,8 +12,9 @@ export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     <View style={styles.container}>
-      <Header />
+      
       <NavigationContainer>
+        <Header />
         <Stack.Navigator
           initialRouteName="Main"
           screenOptions={{ headerShown: false }}
@@ -22,8 +23,9 @@ export default function App() {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Signup" component={SIgnup} />
         </Stack.Navigator>
+        <Footer />
       </NavigationContainer>
-      <Footer />
+      
     </View>
   );
 }

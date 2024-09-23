@@ -26,13 +26,13 @@ const Main = ({ navigation }) => {
       </View>
       <View style={styles.container3}>
         <Button
-          icon="camera"
+          icon="login"
           mode="outlined"
           onPress={() => signup()}
           buttonColor="black"
           textColor="white"
         >
-          Press me
+          SignUp
         </Button>
         <Button
           mode="contained"

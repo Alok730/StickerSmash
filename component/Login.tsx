@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Pressable } from "react-native";
 import { TextInput, Button, HelperText } from "react-native-paper";
 
-const Login: React.FC = () => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -25,7 +25,7 @@ const Login: React.FC = () => {
     }
 
     setErrorMessage(""); // Clear error if validation passes
-    console.log("Login successful!", { emai:email, password });
+    console.log("Login successful!", { emai: email, password });
     // Add login logic here
   };
 
@@ -76,6 +76,14 @@ const Login: React.FC = () => {
       >
         Login
       </Button>
+      <Text>
+        Create a new Account {" "}
+        <Pressable onPress={() => navigation.navigate("Signup")}>
+          <Text style={{ color: "#735503", textDecorationLine: "underline" }}>
+            Signup
+          </Text>
+        </Pressable>
+      </Text>
     </View>
   );
 };
@@ -87,7 +95,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 20,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#f7e4b0",
   },
   title: {
     fontSize: 28,
@@ -99,7 +107,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   button: {
-    marginTop: 10,
+    margin: 10,
+    backgroundColor: "#735503",
   },
   buttonContent: {
     height: 50,

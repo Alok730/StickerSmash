@@ -46,22 +46,29 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import SearchBarComponent from "./SearchBarComponent";
 import { Button } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 const Header = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Header</Text>
+      <Text
+        style={styles.headerText}
+        onPress={() => navigation.navigate("Main")}
+      >
+        Header
+      </Text>
       <SearchBarComponent />
       <Button
         mode="contained"
         onPress={() => console.log("Pressed")}
-        buttonColor="black"
-        textColor="#06c296"
+        buttonColor="#735503"
+        textColor="white"
         contentStyle={styles.buttonContent} // Controls the content size inside the button
         style={styles.button} // Adjust button size and positioning
         labelStyle={styles.buttonLabel} // Optional for styling button text
       >
-        Press me
+        Search
       </Button>
     </View>
   );
@@ -74,7 +81,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: "100%",
     padding: 10,
-    backgroundColor: "#06c296",
+    backgroundColor: "#fcba03",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between", // Aligns the text, search bar, and button evenly
@@ -91,7 +98,8 @@ const styles = StyleSheet.create({
     borderRadius: 10, // Rounded corners for the button
   },
   buttonContent: {
-    height: "100%", // Ensures the button's content takes up the full height
+    height: "100%",
+    width:'100%' // Ensures the button's content takes up the full height
   },
   buttonLabel: {
     fontSize: 14, // Smaller text for the button
